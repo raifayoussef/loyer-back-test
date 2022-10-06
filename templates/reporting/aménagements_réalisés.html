@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Etat des am"nagements effectués</title>
+    <style>
+      * {
+        font-family: sans-serif;
+        height: auto;
+      }
+      h4 {
+        color: #5e5e5e;
+      }
+      th {
+        background-color: #f9a11e;
+        border-right: 1px solid #f9a11e;
+        border-left: 1px solid #f9a11e;
+        padding: 10px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      tr {
+        width: 100%;
+      }
+      td {
+        max-width: 100px;
+        word-break: break-word;
+        padding: 5px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+        border: 1px solid #b4b4b4;
+      }
+      th:first-child {
+        border-top-left-radius: 12px;
+        border-left-color: transparent;
+      }
+      th:last-child {
+        border-top-right-radius: 12px;
+        border-right-color: transparent;
+      }
+      td:first-child {
+        border-left: none;
+      }
+      td:last-child {
+        border-right: none;
+      }
+      .title {
+        color: #828282;
+        width: 70%;
+        margin: 40px auto 40px auto;
+        text-align: center;
+      }
+      span {
+        color: #f9a11e;
+      }
+      .breaker-line {
+        margin: 3rem auto 3rem auto;
+        width: 100%;
+      }
+      .breaker-line > hr {
+        width: 60%;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align: center">
+      <img
+        src="http://www.cm6-microfinance.ma/wp-content/uploads/2018/02/Attawfiq-Microfinance.jpg"
+        style="width: 150px"
+      />
+    </div>
+    <!-- <h2 class="title">Reporting : aménagements réalisés</h2> -->
+    <h2 class="title">Etat des am"nagements effectués.</h2>
+
+    {{#each .}}
+
+    <h4>
+      Numero du contrat :<span> {{ numero_contrat }} </span>{{#foncier}} - Type
+      d'entité organisationnelle :<span> {{ type_lieu }}</span>
+    </h4>
+
+    <table>
+      <thead>
+        <tr class="table-header">
+          <th>Nature Amenagement</th>
+          <th>Numero Facture</th>
+          <th>Montant Amenagement</th>
+          <th>Date Fin Amenagement</th>
+          <th>Date De Livraison</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        {{#amenagement}}
+        <tr>
+          <td>{{ nature_amenagement }}</td>
+          <td>{{ numero_facture }}</td>
+          <td>{{ montant_amenagement }}</td>
+          <td>{{ date_fin_travaux }}</td>
+          <td>{{ date_livraison_local }}</td>
+        </tr>
+        {{/amenagement}}
+      </tbody>
+    </table>
+    {{/foncier}}
+    <div class="breaker-line">
+      <hr />
+    </div>
+    {{/each}}
+  </body>
+</html>

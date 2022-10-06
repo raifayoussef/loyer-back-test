@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Echéances de contrats qui sont inférieurs à 3 mois</title>
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+      th {
+        background-color: #f9a11e;
+        /* border-right: 1px solid rgba(216, 216, 216, 0.8);
+        border-left: 1px solid rgba(216, 216, 216, 0.8); */
+        border-right: 1px solid #f9a11e;
+        border-left: 1px solid #f9a11e;
+        padding: 20px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+      .table-header {
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      td,
+      .mnt-total {
+        border-bottom: 1px solid rgb(216, 216, 216);
+        border-right: 1px solid rgb(216, 216, 216);
+        border-left: 1px solid rgb(216, 216, 216);
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+      th:first-child {
+        border-top-left-radius: 12px;
+        border-left-color: transparent;
+      }
+      th:last-child {
+        border-top-right-radius: 12px;
+        border-right-color: transparent;
+      }
+      td:first-child {
+        border-left: none;
+      }
+      td:last-child {
+        border-right: none;
+      }
+      .mnt-total {
+        color: black;
+        background-color: transparent;
+        text-align: end;
+        padding-right: 20px;
+      }
+      .title {
+        color: #828282;
+        width: 70%;
+        margin: 40px auto 40px auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align: center;">
+      <img src="http://www.cm6-microfinance.ma/wp-content/uploads/2018/02/Attawfiq-Microfinance.jpg" style="width: 150px;">
+    </div>
+    <h2 class="title">Reporting : des échéances de contrats qui sont inférieurs à 3 mois</h2>
+    <table align="center">
+      <thead>
+        <tr class="table-header">
+          <th>Numero contrat</th>
+          <th>Date debut de contrat</th>
+          <th>Date fin de contrat</th>
+          <th>Duree de location</th>
+          <th>Echeance revision loyer</th>
+          <th>Etat</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each .}}
+        <tr>
+          <td>{{numero_contrat}}</td>
+          <td>{{dateFormat date_debut_loyer "DD-MM-YYYY"}}</td>
+          <td>{{dateFormat date_fin_contrat "DD-MM-YYYY"}}</td>
+          <td>{{duree_location}}</td>
+          <td>{{echeance_revision_loyer}}</td>
+          {{#etat_contrat}}
+          <td>{{libelle}}</td>
+          {{/etat_contrat}}
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </body>
+</html>

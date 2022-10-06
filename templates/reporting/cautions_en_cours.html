@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cautions en cours</title>
+    <style>
+      * {
+        font-family: sans-serif;
+      }
+      th {
+        background-color: #f9a11e;
+        /* border-right: 1px solid rgba(216, 216, 216, 0.8);
+        border-left: 1px solid rgba(216, 216, 216, 0.8); */
+        border-right: 1px solid #f9a11e;
+        border-left: 1px solid #f9a11e;
+        padding: 20px;
+        color: white;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+      .table-header {
+        padding: 20px;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      td,
+      .mnt-total {
+        border-bottom: 1px solid rgb(216, 216, 216);
+        border-right: 1px solid rgb(216, 216, 216);
+        border-left: 1px solid rgb(216, 216, 216);
+        padding: 10px;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+      }
+      th:first-child {
+        border-top-left-radius: 12px;
+        border-left-color: transparent;
+      }
+      th:last-child {
+        border-top-right-radius: 12px;
+        border-right-color: transparent;
+      }
+      td:first-child {
+        border-left: none;
+      }
+      td:last-child {
+        border-right: none;
+      }
+      .mnt-total {
+        color: black;
+        background-color: transparent;
+        text-align: end;
+        padding-right: 20px;
+      }
+      .title {
+        color: #828282;
+        width: 70%;
+        margin: 40px auto 40px auto;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <div style="text-align: center;">
+      <img src="http://www.cm6-microfinance.ma/wp-content/uploads/2018/02/Attawfiq-Microfinance.jpg" style="width: 150px;">
+    </div>
+    <h2 class="title"> Reporting : cautions en cours </h2>
+    <table align="center">
+      <thead >
+        <tr class="table-header">
+          <th>Numéro contrat</th>
+          <th>Statut caution</th>
+          <th>Durée caution</th>
+          <th>Montant caution</th>
+          <th>Date reprise de caution</th>
+          <th>Date début de contrat</th>
+          <th>Date fin de contrat</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each .}}
+        <tr>
+          <td>{{ numero_contrat }}</td>
+          <td>{{ statut_caution }}</td>
+          <td>{{ duree_caution }}</td>
+          <td>{{ montant_caution }}</td>
+          <td>{{#if date_reprise_caution}} {{dateFormat date_reprise_caution "DD-MM-YYYY"}} {{else}} -- {{/if}}</td>
+          <td>{{#if date_debut_loyer}} {{dateFormat date_debut_loyer "DD-MM-YYYY"}} {{else}} -- {{/if}}</td>
+          <td>{{#if date_fin_contrat}} {{dateFormat date_fin_contrat "DD-MM-YYYY"}} {{else}} -- {{/if}}</td>
+        </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </body>
+</html>
